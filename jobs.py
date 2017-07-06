@@ -21,10 +21,11 @@ def index():
 
 @app.route('/jobs/detail/<id>')
 def detail(id):
-	import json
-	with open('jobs.json') as input:
-	    jobs = json.load(input)
-	return render_template('detail.html', job=jobs[id])
+	con = sqlite3.connect('jobs.db')
+	cur = con.cursor()
+	cur.execute('select id, title, date_create, path, detail from jobs where id = ?', (id,))
+	job = cur.fetchone()
+	return render_template('detail.html', job=job)
 
 if __name__ == "__main__":
     app.run(debug=True)
