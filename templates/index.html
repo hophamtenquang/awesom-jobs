@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Awesom Jobs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/jobs">Awesom Jobs</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <!--li class="active"><a href="/jobs">Home</a></li-->
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <ul class="list-group">
+        {% for job in jobs %}
+        <a href="/jobs/detail/{{ job[0] }}">
+          <li class="list-group-item">{{ job[1] }}<span class="badge">{{ job[2] }}</span></li>
+        </a>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
